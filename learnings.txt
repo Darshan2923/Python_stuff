@@ -1,0 +1,65 @@
+# Angular Core Concepts
+
+--  Components, Services
+
+--  Directive, Pipes
+
+--  Data-Binding, Event Handlers
+
+--  Http Module, Forms Module
+
+--  Routing, Animations
+
+--  Testing, Building for production
+
+
+
+
+# Creating an Angular app
+
+# install the @angular/cli
+--  npm install -g @angular/cli
+
+# check cli version
+--  ng --version
+
+# create an app
+--  ng new first-ng-app  # optionally use --dry-run
+
+# create an app with some configuration
+--  ng new first-ng-app --inline-style --inline-template
+
+
+
+# Creating a component
+--  ng g c header           # short form  
+--  ng generate component header   # full form  
+    # creates inside the 'src/app' folder  
+
+    # OR (in a nested directory)  
+--  ng g c components/header  
+    # creates HeaderComponent  
+    # inside the 'src/app/components' folder  
+
+--  ng g c home  
+    # creates the HomeComponent  
+
+
+# Angular Data Binding
+--  Binding data between the Typescript class of the component and the component's template.
+
+# Data Binding with Modern Angular (with Signals)
+import { Component, signal } from '@angular/core';
+
+@Component({
+  ...
+  template: `
+    <p> Here's my var's value: {{ myVar() }} </p>
+  `
+})
+class MyComponent {
+  myVar = signal('some value');
+}
+
+
+
