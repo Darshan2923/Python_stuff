@@ -1,1 +1,11 @@
 <p>home works!</p>
+<!-- <app-greeting
+  [message]="'Passing message from home component (parent) to greeting (child)'"
+/> -->
+<app-greeting [message]="homeMessage()" />
+<app-counter />
+<input
+  placeholder="Type something..."
+  type="text"
+  (keyup)="keyUpHandler($event)"
+/>

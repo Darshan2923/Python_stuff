@@ -1,65 +1,150 @@
-# Angular Core Concepts
-
---  Components, Services
-
---  Directive, Pipes
-
---  Data-Binding, Event Handlers
-
---  Http Module, Forms Module
-
---  Routing, Animations
-
---  Testing, Building for production
+Angular Core Concepts:
+• Components, Services
+• Directive, Pipes
+• Data-Binding, Event Handlers
+• Http Module, Forms Module
+• Routing, Animations
+• Testing, Building for production
 
 
-
-
-# Creating an Angular app
-
+Creating an Angular app
 # install the @angular/cli
 --  npm install -g @angular/cli
-
 # check cli version
 --  ng --version
-
 # create an app
---  ng new first-ng-app  # optionally use --dry-run
+--  ng new first-ng-app #optionally user --dry-run
 
 # create an app with some configuration
 --  ng new first-ng-app --inline-style --inline-template
 
 
+can also create angular app easily using vite
+npm create vite@latest
 
-# Creating a component
---  ng g c header           # short form  
---  ng generate component header   # full form  
-    # creates inside the 'src/app' folder  
-
-    # OR (in a nested directory)  
---  ng g c components/header  
-    # creates HeaderComponent  
-    # inside the 'src/app/components' folder  
-
---  ng g c home  
-    # creates the HomeComponent  
+if direct ng does not work, use npx ng --command
 
 
-# Angular Data Binding
---  Binding data between the Typescript class of the component and the component's template.
+Creating a component
+--   ng g c header #short form
+--   ng generate component header g # full form
+# creates inside the src/app folder
 
-# Data Binding with Modern Angular (with Signals)
+# OR (in a nested directory)
+--  ng g c components/header
+# creates HeaderComponent
+# inside the src/app/components
+
+--  ng g c home
+# creates the Homecomponent
+
+
+
+
+
+
+# Angular Data-Binding
+--  Binding data between the TypeScript class of the
+    component, and the component's template.
+
+
+# Data Binding with Modern Angular (with Signals) (Recommended)
 import { Component, signal } from '@angular/core';
-
 @Component({
-  ...
-  template: `
-    <p> Here's my var's value: {{ myVar() }} </p>
-  `
+    ...,
+    template:`
+        <p>Here's my var's value: {{myVar()}}</p>
+    `
 })
 class MyComponent {
-  myVar = signal('some value');
+myVar = signal( 'some value');
+}
+
+# Data Binding without Signals (traditional way)
+import {Component } from'@angular/core' ;
+@Component ( {
+    ...,
+template:`
+    <p>Here's my var's value: {{myVar}}</p>
+`
+})
+
+class {
+myVar ='some value ' ;
 }
 
 
 
+# Creating Greetingcomponent
+--  ng g c components/greeting
+# g generates in 'src/app/components'
+
+
+passing things from parent component to child component happens via :
+
+Suppose we wanna pass message from home component to greeting component,
+in home.ts
+Add export class Home {
+  homeMessage = signal(
+    'Passing message from home  (parent) to greeting (child)'
+  );
+}
+
+in home.html
+<app-greeting [message]="homeMessage()" />
+Note: with square bracket, it expects JS without one, you can pass hardcoded message
+
+in greeting.ts
+export class Greeting {
+  message = input('Default greeting message');
+}
+
+in greetings.html
+<p>{{message()}}</p>
+
+
+
+Event listeners in Angular
+# call a function on key
+< input type="text" (keyup)="keyUpHandler()">
+
+ class MyComponent {
+  keyUpHand1er(){
+    console.log('user typed something in the input')
+  }
+ }
+
+
+Let's create a counter component
+--  ng g c components/counter
+
+
+Routing in Angular
+-- Angular is a single page application. Using routes,
+you can still define different pages that the user
+can navigate to.
+-- The browser only loads the bundles related to the
+route user has accessed.
+-- This significantly improves the performance of the
+app, and user experience.
+
+
+Angular Services
+--  Angular Services are used to encapsulate data,
+making HTTP calls, or performing any task that is
+not related directly to data rendering (in my
+opinion).
+
+
+Creating an Angular Service
+--  ng g service services/todos
+# creates todos.service.ts inside `src/app/services`
+
+
+ngOnInit for initializing state when the component is first viewed
+
+
+Making HTTP calls with Angular Services
+• Provide HTTP module/providers in the app config using provideHttpC1ient()
+• Inject the HttpC1ient service
+• Use the http methods
