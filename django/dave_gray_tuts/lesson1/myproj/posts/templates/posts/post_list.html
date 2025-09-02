@@ -6,4 +6,14 @@ Posts List
 
 {% block content %}
 <h1>Posts List</h1>
+{% for post in posts %}
+<article class="post">
+
+    <a href="{% url 'posts:page' slug=post.slug %}">
+        <h2>{{ post.title }}</h2>
+    </a>
+    <p>{{post.date}}</p>
+    <p>{{ post.body }}</p>
+</article>
+{% endfor %}
 {% endblock %}
