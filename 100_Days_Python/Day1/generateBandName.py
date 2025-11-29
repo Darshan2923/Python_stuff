@@ -9,3 +9,6 @@ print("Hello" + " " + "Python")
 # inputs
 # input("A prompt for the user")
 print("Hello " + input("What is your Name?\n"))
+
+# variables
+print(len(input("What is your name?")))
