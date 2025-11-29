@@ -23,9 +23,11 @@ nr_symbols_list=random_elements_generator(nr_symbols,symbols)
 nr_numbers_list=random_elements_generator(nr_numbers,numbers)
 
 password=nr_letters_list+nr_symbols_list+nr_numbers_list
-print(password)
+password_string="".join(password)
+print(password_string)
 
 #Hard Level - Order of characters randomised:
 #e.g. 4 letter, 2 symbol, 2 number = g^2jk8&P
 random.shuffle(password)
-print(password)
+password_string="".join(password)
+print(password_string)
